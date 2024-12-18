@@ -16,5 +16,6 @@
         <p>&copy; 2024 Sistem Catering. Semua Hak Dilindungi.</p>
         <p>Dibuat dengan ❤️ oleh Tim Developer</p>
     </footer>
+    @section('script')
 </body>
 </html>
