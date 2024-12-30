@@ -8,7 +8,7 @@
 
 @section('content')
 	<div class="h-1/2 mb-3">
-		<img src="https://www.lalamove.com/hubfs/catering%20harian%20%281%29.jpg" alt="" class="w-full h-full object-cover rounded-lg">
+		<img src="{{ asset('/storage/' . $banner[0]->image_url) }}" alt="" class="w-full h-full object-cover rounded-lg">
 	</div>
 
 	<div class="grid mb-8 rounded-lg md:mb-12 md:grid-cols-2">
@@ -61,38 +61,16 @@
 
 	
 	<div class="flex gap-3">
+		@foreach ($testimonials as $testimonial)
 		<div class="w-full bg-white border border-gray-200 rounded-lg shadow">
 				<div class="flex flex-col items-center pb-20 pt-20 px-8">
-						<img class="w-24 h-24 mb-3 rounded-full shadow-lg" src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTSLfKF1KlJMfw-awd5Dkxnnk_4etgh9cMf_QKAQYut6thoyLmfj3e7EAu_AgGsMXO5d1kkNpYeySR1z03Nw6TIOw" alt="Bonnie image"/>
-						<h5 class="mb-1 text-xl font-medium text-gray-900">Bae Suzy</h5>
-						<span class="text-sm text-gray-500 dark:text-gray-400 mb-3">Catering baeee</span>
+						<img class="w-24 h-24 mb-3 rounded-full shadow-lg" src="{{ asset('/storage/' . $testimonial->image_url) }}" alt="Bonnie image"/>
+						<h5 class="mb-1 text-xl font-medium text-gray-900">{{ $testimonial->name }}</h5>
+						<span class="text-sm text-gray-500 dark:text-gray-400 mb-3">{{ $testimonial->description }}</span>
 						<p class="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus dolorem fugit ex!</p>
 				</div>
 		</div>
-		<div class="w-full bg-white border border-gray-200 rounded-lg shadow">
-				<div class="flex flex-col items-center pb-20 pt-20 px-8">
-						<img class="w-24 h-24 mb-3 rounded-full shadow-lg" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTOgywO3sIkGy_W9VWNF6v4m9Xv2vnpJQW0Tv_QFt09oXd_7409MVRBEPktoQ9L39vZvtc4KMxKswR_vhXBnD481Q" alt="Bonnie image"/>
-						<h5 class="mb-1 text-xl font-medium text-gray-900">Jieun</h5>
-						<span class="text-sm text-gray-500 dark:text-gray-400">Catering iu</span>
-						<p class="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis, vitae. Fugiat, ipsa! Odit, ducimus maiores!</p>
-				</div>
-		</div>
-		<div class="w-full bg-white border border-gray-200 rounded-lg shadow">
-				<div class="flex flex-col items-center pb-20 pt-20 px-8">
-						<img class="w-24 h-24 mb-3 rounded-full shadow-lg" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcT7zhoRo_McR_u_pYB-uJIQ0Id1m1SK4qEAoyEu54tGlP-0C0Cj3vW8Uks9PUH5m5uK5K9xpanu2E82mn6QHrbyHQ" alt="Bonnie image"/>
-						<h5 class="mb-1 text-xl font-medium text-gray-900">Jung somin</h5>
-						<span class="text-sm text-gray-500 dark:text-gray-400">Catering jung so</span>
-						<p class="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam dolor modi delectus nostrum!</p>
-				</div>
-		</div>
-		<div class="w-full bg-white border border-gray-200 rounded-lg shadow">
-				<div class="flex flex-col items-center pb-20 pt-20 px-8">
-						<img class="w-24 h-24 mb-3 rounded-full shadow-lg" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQ4FlxfFz_IH2qoLXly7aFrz6RDh3xUt-XIGIfuDzlmytMQvZRHnuUDSu56RKOysqzZCmmU9fH1uV2Glo28Ne9yug" alt="Bonnie image"/>
-						<h5 class="mb-1 text-xl font-medium text-gray-900">Bona</h5>
-						<span class="text-sm text-gray-500 dark:text-gray-400">Catering boo</span>
-						<p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos magni, commodi nulla error blanditiis perspiciatis sint ad doloremque asperiores!</p>
-				</div>
-		</div>
+		@endforeach
 	</div>
 
 @endsection

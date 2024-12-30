@@ -1,0 +1,3 @@
+DROP DATABASE IF EXISTS dbcatering;
+
+CREATE DATABASE dbcatering;
