@@ -70,69 +70,29 @@
         <aside class="w-full lg:w-1/4 bg-gray-100 p-8 border-l">
             <h2 class="text-lg font-bold mb-4 text-gray-800">OUR MENU</h2>
             <ul class="space-y-4 text-gray-700">
+                @foreach ($menu_categories as $menu_category)
                 <li>
-                    <button type="button" onclick="openDropdown(this)" id="dropdown-button" class="flex items-center w-full p-2 text-base group" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
-                        <span class="flex-1 text-left rtl:text-right whitespace-nowrap text-sm">E-commerce</span>
+                    <button type="button" onclick="openDropdown({{ $menu_category->id }})" id="dropdown-button" class="flex items-center w-full p-2 text-base group" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
+                        <span class="flex-1 text-left rtl:text-right whitespace-nowrap text-sm">{{ $menu_category->name }}</span>
                         <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="m1 1 4 4 4-4"/>
                         </svg>
                     </button>
-                    <ul id="dropdown-items" class="hidden py-1 space-y-1">
+                    <ul id="dropdown-items-{{ $menu_category->id }}" class="hidden space-y-1">
+                        @foreach ($menu_category->menus as $menu)
                         <li>
-                            <a href="#" class="flex items-center w-full p-1 pl-4 group text-sm">Products</a>
+                            <a href="#" class="flex items-center w-full p-1 pl-4 group text-sm">{{ $menu->name }}</a>
                         </li>
-                        <li>
-                            <a href="#" class="flex items-center w-full p-1 pl-4 group text-sm">Billing</a>
-                        </li>
-                        <li>
-                            <a href="#" class="flex items-center w-full p-1 pl-4 group text-sm">Invoice</a>
-                        </li>
+                        @endforeach
                     </ul>
                 </li>
-                <li>
-                    <button type="button" onclick="openDropdown(this)" id="dropdown-button" class="flex items-center w-full p-2 text-base group" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
-                        <span class="flex-1 text-left rtl:text-right whitespace-nowrap text-sm">E-commerce</span>
-                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="m1 1 4 4 4-4"/>
-                        </svg>
-                    </button>
-                    <ul id="dropdown-items" class="hidden py-1 space-y-1">
-                        <li>
-                            <a href="#" class="flex items-center w-full p-1 pl-4 group text-sm">Products</a>
-                        </li>
-                        <li>
-                            <a href="#" class="flex items-center w-full p-1 pl-4 group text-sm">Billing</a>
-                        </li>
-                        <li>
-                            <a href="#" class="flex items-center w-full p-1 pl-4 group text-sm">Invoice</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <button type="button" onclick="openDropdown(this)" id="dropdown-button" class="flex items-center w-full p-2 text-base group" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
-                        <span class="flex-1 text-left rtl:text-right whitespace-nowrap text-sm">E-commerce</span>
-                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="m1 1 4 4 4-4"/>
-                        </svg>
-                    </button>
-                    <ul id="dropdown-items" class="hidden py-1 space-y-1">
-                        <li>
-                            <a href="#" class="flex items-center w-full p-1 pl-4 group text-sm">Products</a>
-                        </li>
-                        <li>
-                            <a href="#" class="flex items-center w-full p-1 pl-4 group text-sm">Billing</a>
-                        </li>
-                        <li>
-                            <a href="#" class="flex items-center w-full p-1 pl-4 group text-sm">Invoice</a>
-                        </li>
-                    </ul>
-                </li>
+                @endforeach
             </ul>
         </aside>
     </div>
     <script>
-        function openDropdown(element) {
-            let items = document.getElementById('dropdown-items');
+        function openDropdown(menu_category_id) {
+            let items = document.getElementById(`dropdown-items-${menu_category_id}`);
 
             if (items.classList.contains('hidden')) {
                 items.classList.remove('hidden');
