@@ -31,7 +31,7 @@
                 <div class="hidden sm:ml-6 sm:block">
                     <div class="flex space-x-4">
                         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                        <a href="{{ route('ourmenu.main') }}" class="font-light rounded-md px-3 py-2 text-sm font-medium hover:bg-gray-100">Our menu</a>
+                        <a href="{{ route('ourmenu.main', 1) }}" class="font-light rounded-md px-3 py-2 text-sm font-medium hover:bg-gray-100">Our menu</a>
                         <a href="#" class="font-light rounded-md px-3 py-2 text-sm font-medium hover:bg-gray-100">Order</a>
                         <a href="#" class="font-light rounded-md px-3 py-2 text-sm font-medium hover:bg-gray-100">Store locations</a>
                         <a href="#" class="font-light rounded-md px-3 py-2 text-sm font-medium hover:bg-gray-100">About us</a>

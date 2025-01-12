@@ -8,10 +8,10 @@ use App\Models\MenuItem;
 class MenuChoice extends Model
 {
     protected $fillable = [
-        'name'
+        'name', 'menu_id'
     ];
 
-    public function menus() {
+    public function menu() {
         return $this->belongsToMany(
             Menu::class,
             'menu_choices_menus',

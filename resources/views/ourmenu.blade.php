@@ -10,58 +10,24 @@
     <div class="flex flex-col lg:flex-row min-h-screen">
         <div class="w-full lg:w-3/4 p-8 bg-white">
             <div class="mb-6">
-                <h1 class="text-3xl font-bold text-gray-800">Meal Box Standard</h1>
-                <p class="text-sm text-red-600">*Minimal Order 50 pax / Menu</p>
+                <h1 class="text-3xl font-bold text-gray-800">{{ $menu->name }}</h1>
+                <p class="text-sm text-red-600">{{ $menu->notes }}</p>
             </div>
             <div class="flex flex-col lg:flex-row items-start gap-8">
                 <div class="w-full lg:w-1/2">
-                    <img src="https://via.placeholder.com/400x300" alt="Meal Box Image" class="rounded-lg shadow-md">
+                    <img src="{{ asset('/storage/' . $menu->picture_url) }}" alt="Meal Box Image" class="rounded-lg shadow-md">
                 </div>
 
                 <div class="w-full lg:w-1/2">
                     <ul class="space-y-3 text-gray-700">
-                        <li>
-                            <h2 class="font-semibold text-md">- NASI PUTIH</h2>
-                        </li>
-                        <li>
-                            <h2 class="font-semibold text-md">- PILIH SATU MENU</h2>
-                            <p class="text-sm">+ Ayam Goreng Tepung</p>
-                            <p class="text-sm">+ Ayam Bakar Kecap</p>
-                            <p class="text-sm">+ Ayam Panggang Bumbu Rujak</p>
-                            <p class="text-sm">+ Ayam Panggan Klaten</p>
-                            <p class="text-sm">+ Terik Ayam</p>
-                            <p class="text-sm">+ Ayam Rica-Rica</p>
-                        </li>
-
-                        <li>
-                            <h2 class="font-semibold text-md">- PILIH SATU MENU</h2>
-                            <p class="text-sm">+ Semur Galantin</p>
-                            <p class="text-sm">+ Cap Cay Goreng</p>
-                            <p class="text-sm">+ Sambal Goreng Ati Kentang</p>
-                            <p class="text-sm">+ Oseng Buncis Telur Puyuh</p>
-                            <p class="text-sm">+ Sambal Goreng Printil</p>
-                            <p class="text-sm">+ Semur Bola Daging</p>
-                        </li>
-
-                        <li>
-                            <h2 class="font-semibold text-md">- PILIH SATU MENU</h2>
-                            <p class="text-sm">+ Mie Goreng Bakso</p>
-                            <p class="text-sm">+ Soun Goreng Ayam Jamur</p>
-                            <p class="text-sm">+ Bihun Goreng Bakso</p>
-                            <p class="text-sm">+ Kering Teri Kacang</p>
-                            <p class="text-sm">+ Oseng Bakso Sapi Jagung</p>
-                            <p class="text-sm">+ Oseng Sosis Bakso Ayam</p>
-                        </li>
-
-                        <li>
-                            <h2 class="font-semibold text-md">- PISANG</h2>
-                        </li>
-                        <li>
-                            <h2 class="font-semibold text-md">- KERUPUK</h2>
-                        </li>
-                        <li>
-                            <h2 class="font-semibold text-md">- AIR MINERAL CUP</h2>
-                        </li>
+                        @foreach ($menu->menuChoices as $menu_choice)
+                            <li>
+                                <h2 class="font-semibold text-md mb-3">- Pilihan {{ $menu_choice->name }}</h2>
+                            @foreach ($menu_choice->menuItems as $menu_item)
+                                <p class="text-sm ml-3">+ {{ $menu_item->name }}</p>
+                            @endforeach
+                            </li>
+                        @endforeach
                     </ul>
                 </div>
             </div>
@@ -81,7 +47,7 @@
                     <ul id="dropdown-items-{{ $menu_category->id }}" class="hidden space-y-1">
                         @foreach ($menu_category->menus as $menu)
                         <li>
-                            <a href="#" class="flex items-center w-full p-1 pl-4 group text-sm">{{ $menu->name }}</a>
+                            <a href="{{ route('ourmenu.main', $menu->id) }}" class="flex items-center w-full p-1 pl-4 group text-sm">{{ $menu->name }}</a>
                         </li>
                         @endforeach
                     </ul>

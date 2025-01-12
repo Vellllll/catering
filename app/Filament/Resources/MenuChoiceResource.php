@@ -26,7 +26,10 @@ class MenuChoiceResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('name')->required()->maxLength(40)
+                TextInput::make('name')->required()->maxLength(40),
+                Select::make('menu_id')
+                    ->relationship(name: 'menu', titleAttribute: 'name')
+                    ->required()
             ]);
     }
 
@@ -34,7 +37,8 @@ class MenuChoiceResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('name')
+                TextColumn::make('name'),
+                TextColumn::make('menu.name')
             ])
             ->filters([
                 //
