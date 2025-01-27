@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catering - @yield('title')</title>
     @vite('resources/css/app.css')
+    @yield('style')
 </head>
 <body>
     @section('navigation')
@@ -16,6 +18,6 @@
         <p>&copy; 2024 Sistem Catering. Semua Hak Dilindungi.</p>
         <p>Dibuat dengan ❤️ oleh Tim Developer</p>
     </footer>
-    @section('script')
+    @yield('script')
 </body>
 </html>

@@ -11,7 +11,12 @@ class OurMenuController extends Controller
 {
     public function main($menu_id) {
         $menu_categories = MenuCategory::all();
-        $menu = Menu::findOrFail($menu_id);
+
+        if ($menu_id) {
+            $menu = Menu::findOrFail($menu_id);
+        } else {
+            $menu = Menu::first();
+        }
 
         return view(
             'ourmenu',

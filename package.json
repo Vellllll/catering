@@ -17,6 +17,7 @@
         "vite": "^6.0"
     },
     "dependencies": {
+        "leaflet-routing-machine": "^3.2.12",
         "postcss-nesting": "^13.0.1"
     }
 }
