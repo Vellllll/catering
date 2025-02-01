@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('menu_category_id')->constrained(
                 table: 'menu_categories',
             )->nullable()->onUpdate('cascade')->onDelete('cascade');
+            $table->integer('price')->required();
             // $table->unsignedInteger('menu_category_id');
             $table->timestamps();
 

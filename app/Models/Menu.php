@@ -9,7 +9,7 @@ use App\Models\MenuCategory;
 class Menu extends Model
 {
     protected $fillable = [
-        'name', 'picture_url', 'menu_category_id', 'notes'
+        'name', 'picture_url', 'menu_category_id', 'notes', 'price'
     ];
 
     public function menuChoices() {

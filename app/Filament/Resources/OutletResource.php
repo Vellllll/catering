@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\MenuResource\Pages;
-use App\Filament\Resources\MenuResource\RelationManagers;
-use App\Models\Menu;
+use App\Filament\Resources\OutletResource\Pages;
+use App\Filament\Resources\OutletResource\RelationManagers;
+use App\Models\Outlet;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -14,13 +14,10 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Forms\Components\TextInput;
 use Filament\Tables\Columns\TextColumn;
-use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\Select;
-use Filament\Tables\Columns\ImageColumn;
 
-class MenuResource extends Resource
+class OutletResource extends Resource
 {
-    protected static ?string $model = Menu::class;
+    protected static ?string $model = Outlet::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -29,10 +26,9 @@ class MenuResource extends Resource
         return $form
             ->schema([
                 TextInput::make('name')->required()->maxLength(40),
-                FileUpload::make('picture_url')->image(),
-                Select::make('menu_category_id')
-                    ->relationship(name: 'menuCategory', titleAttribute: 'name'),
-                TextInput::make('price')->integer()->required()
+                TextInput::make('address')->required(),
+                TextInput::make('latitude')->numeric()->required(),
+                TextInput::make('longitude')->numeric()->required()
             ]);
     }
 
@@ -41,9 +37,9 @@ class MenuResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('name'),
-                ImageColumn::make('picture_url'),
-                TextColumn::make('menuCategory.name'),
-                TextColumn::make('price')
+                TextColumn::make('address'),
+                TextColumn::make('latitude'),
+                TextColumn::make('longitude')
             ])
             ->filters([
                 //
@@ -68,9 +64,9 @@ class MenuResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListMenus::route('/'),
-            'create' => Pages\CreateMenu::route('/create'),
-            'edit' => Pages\EditMenu::route('/{record}/edit'),
+            'index' => Pages\ListOutlets::route('/'),
+            'create' => Pages\CreateOutlet::route('/create'),
+            'edit' => Pages\EditOutlet::route('/{record}/edit'),
         ];
     }
 }
